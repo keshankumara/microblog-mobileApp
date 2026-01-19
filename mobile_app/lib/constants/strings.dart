@@ -1,7 +1,7 @@
 class AppStrings {
   // App
   static const String appName = 'Micro-Blog';
-  
+
   // Authentication
   static const String login = 'Login';
   static const String register = 'Register';
@@ -12,7 +12,7 @@ class AppStrings {
   static const String fullName = 'Full Name';
   static const String dontHaveAccount = "Don't have an account?";
   static const String alreadyHaveAccount = 'Already have an account?';
-  
+
   // Posts
   static const String createPost = 'Create Post';
   static const String editPost = 'Edit Post';
@@ -22,12 +22,13 @@ class AppStrings {
   static const String publicFeed = 'Public Feed';
   static const String privateFeed = 'My Private Posts';
   static const String deletePost = 'Delete Post';
-  static const String deleteConfirmation = 'Are you sure you want to delete this post?';
-  
+  static const String deleteConfirmation =
+      'Are you sure you want to delete this post?';
+
   // Profile
   static const String profile = 'Profile';
   static const String myPosts = 'My Posts';
-  
+
   // General
   static const String save = 'Save';
   static const String cancel = 'Cancel';

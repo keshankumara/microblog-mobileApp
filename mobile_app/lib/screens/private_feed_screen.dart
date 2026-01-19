@@ -18,11 +18,7 @@ class _PrivateFeedScreenState extends State<PrivateFeedScreen> {
   final PostService _postService = PostService();
 
   void _handleEditPost(Post post) {
-    Navigator.pushNamed(
-      context,
-      '/edit-post',
-      arguments: post,
-    );
+    Navigator.pushNamed(context, '/edit-post', arguments: post);
   }
 
   Future<void> _handleDeletePost(Post post) async {
@@ -30,9 +26,7 @@ class _PrivateFeedScreenState extends State<PrivateFeedScreen> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.cardBackground,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text(
           AppStrings.deletePost,
           style: TextStyle(color: AppColors.primaryText),
@@ -106,10 +100,7 @@ class _PrivateFeedScreenState extends State<PrivateFeedScreen> {
         body: const Center(
           child: Text(
             'Please log in to view private posts',
-            style: TextStyle(
-              color: AppColors.secondaryText,
-              fontSize: 16,
-            ),
+            style: TextStyle(color: AppColors.secondaryText, fontSize: 16),
           ),
         ),
       );
@@ -138,9 +129,7 @@ class _PrivateFeedScreenState extends State<PrivateFeedScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.warning,
-              ),
+              child: CircularProgressIndicator(color: AppColors.warning),
             );
           }
 
@@ -157,9 +146,7 @@ class _PrivateFeedScreenState extends State<PrivateFeedScreen> {
                   const SizedBox(height: 16),
                   Text(
                     'Error: ${snapshot.error}',
-                    style: const TextStyle(
-                      color: AppColors.secondaryText,
-                    ),
+                    style: const TextStyle(color: AppColors.secondaryText),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -191,10 +178,7 @@ class _PrivateFeedScreenState extends State<PrivateFeedScreen> {
                   const SizedBox(height: 8),
                   const Text(
                     'Create a private post to keep it just for you',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.lightText,
-                    ),
+                    style: TextStyle(fontSize: 14, color: AppColors.lightText),
                     textAlign: TextAlign.center,
                   ),
                 ],

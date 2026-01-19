@@ -14,7 +14,7 @@ class PostService {
   }) async {
     try {
       DocumentReference docRef = _firestore.collection(_collection).doc();
-      
+
       Post post = Post(
         id: docRef.id,
         userId: userId,
@@ -64,8 +64,8 @@ class PostService {
         .orderBy('createdAt', descending: true)
         .snapshots()
         .map((snapshot) {
-      return snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
-    });
+          return snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
+        });
   }
 
   // Get user's private posts (stream)
@@ -77,8 +77,8 @@ class PostService {
         .orderBy('createdAt', descending: true)
         .snapshots()
         .map((snapshot) {
-      return snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
-    });
+          return snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
+        });
   }
 
   // Get all user's posts (both public and private)
@@ -89,14 +89,17 @@ class PostService {
         .orderBy('createdAt', descending: true)
         .snapshots()
         .map((snapshot) {
-      return snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
-    });
+          return snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
+        });
   }
 
   // Get a single post by ID
   Future<Post?> getPostById(String postId) async {
     try {
-      DocumentSnapshot doc = await _firestore.collection(_collection).doc(postId).get();
+      DocumentSnapshot doc = await _firestore
+          .collection(_collection)
+          .doc(postId)
+          .get();
       if (doc.exists) {
         return Post.fromDocument(doc);
       }

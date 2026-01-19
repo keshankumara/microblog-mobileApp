@@ -42,10 +42,7 @@ class PostCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: const BorderSide(
-          color: AppColors.border,
-          width: 1,
-        ),
+        side: const BorderSide(color: AppColors.border, width: 1),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -64,8 +61,8 @@ class PostCard extends StatelessWidget {
                         backgroundColor: AppColors.primary,
                         radius: 20,
                         child: Text(
-                          post.userName.isNotEmpty 
-                              ? post.userName[0].toUpperCase() 
+                          post.userName.isNotEmpty
+                              ? post.userName[0].toUpperCase()
                               : 'U',
                           style: const TextStyle(
                             color: Colors.white,
@@ -159,7 +156,11 @@ class PostCard extends StatelessWidget {
                             value: 'edit',
                             child: Row(
                               children: [
-                                Icon(Icons.edit, size: 20, color: AppColors.info),
+                                Icon(
+                                  Icons.edit,
+                                  size: 20,
+                                  color: AppColors.info,
+                                ),
                                 SizedBox(width: 8),
                                 Text('Edit'),
                               ],
@@ -169,7 +170,11 @@ class PostCard extends StatelessWidget {
                             value: 'delete',
                             child: Row(
                               children: [
-                                Icon(Icons.delete, size: 20, color: AppColors.error),
+                                Icon(
+                                  Icons.delete,
+                                  size: 20,
+                                  color: AppColors.error,
+                                ),
                                 SizedBox(width: 8),
                                 Text('Delete'),
                               ],
@@ -184,10 +189,7 @@ class PostCard extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             // Divider
-            const Divider(
-              color: AppColors.divider,
-              height: 1,
-            ),
+            const Divider(color: AppColors.divider, height: 1),
             const SizedBox(height: 12),
             // Post content
             Text(

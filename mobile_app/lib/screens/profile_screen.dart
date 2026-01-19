@@ -20,9 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.cardBackground,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text(
           'Logout',
           style: TextStyle(color: AppColors.primaryText),
@@ -105,10 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ? const Center(
               child: Text(
                 'Please log in to view your profile',
-                style: TextStyle(
-                  color: AppColors.secondaryText,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: AppColors.secondaryText, fontSize: 16),
               ),
             )
           : FutureBuilder(
@@ -116,9 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.primary,
-                    ),
+                    child: CircularProgressIndicator(color: AppColors.primary),
                   );
                 }
 
@@ -126,9 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   return Center(
                     child: Text(
                       'Error loading profile: ${snapshot.error}',
-                      style: const TextStyle(
-                        color: AppColors.error,
-                      ),
+                      style: const TextStyle(color: AppColors.error),
                       textAlign: TextAlign.center,
                     ),
                   );
@@ -254,10 +245,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 );
                               },
                             ),
-                            const Divider(
-                              color: AppColors.divider,
-                              height: 1,
-                            ),
+                            const Divider(color: AppColors.divider, height: 1),
                             ListTile(
                               leading: const Icon(
                                 Icons.lock,
@@ -303,11 +291,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildInfoRow(IconData icon, String label, String value) {
     return Row(
       children: [
-        Icon(
-          icon,
-          color: AppColors.primary,
-          size: 24,
-        ),
+        Icon(icon, color: AppColors.primary, size: 24),
         const SizedBox(width: 12),
         Expanded(
           child: Column(

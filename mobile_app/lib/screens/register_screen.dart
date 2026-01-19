@@ -42,7 +42,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           password: _passwordController.text,
           fullName: _fullNameController.text.trim(),
         );
-        
+
         if (mounted) {
           Navigator.pushReplacementNamed(context, '/home');
         }
@@ -84,7 +84,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     color: AppColors.primary,
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // App Name
                   Text(
                     AppStrings.appName,
@@ -96,7 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  
+
                   Text(
                     'Create your account',
                     textAlign: TextAlign.center,
@@ -106,7 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   const SizedBox(height: 48),
-                  
+
                   // Register Title
                   const Text(
                     AppStrings.register,
@@ -117,7 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  
+
                   // Full Name Field
                   CustomTextField(
                     controller: _fullNameController,
@@ -135,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // Email Field
                   CustomTextField(
                     controller: _emailController,
@@ -147,15 +147,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                          .hasMatch(value)) {
+                      if (!RegExp(
+                        r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                      ).hasMatch(value)) {
                         return 'Please enter a valid email';
                       }
                       return null;
                     },
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // Password Field
                   CustomTextField(
                     controller: _passwordController,
@@ -185,7 +186,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // Confirm Password Field
                   CustomTextField(
                     controller: _confirmPasswordController,
@@ -202,7 +203,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       onPressed: () {
                         setState(
-                            () => _obscureConfirmPassword = !_obscureConfirmPassword);
+                          () => _obscureConfirmPassword =
+                              !_obscureConfirmPassword,
+                        );
                       },
                     ),
                     validator: (value) {
@@ -216,7 +219,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
                   const SizedBox(height: 24),
-                  
+
                   // Register Button
                   CustomButton(
                     text: AppStrings.register,
@@ -225,7 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     icon: Icons.person_add,
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // Login Link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

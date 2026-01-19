@@ -15,9 +15,7 @@ import 'services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -51,10 +49,7 @@ class MyApp extends StatelessWidget {
           elevation: 2,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
-            side: const BorderSide(
-              color: AppColors.border,
-              width: 1,
-            ),
+            side: const BorderSide(color: AppColors.border, width: 1),
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -62,24 +57,15 @@ class MyApp extends StatelessWidget {
           fillColor: AppColors.cardBackground,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: AppColors.border,
-              width: 1,
-            ),
+            borderSide: const BorderSide(color: AppColors.border, width: 1),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: AppColors.border,
-              width: 1,
-            ),
+            borderSide: const BorderSide(color: AppColors.border, width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: AppColors.primary,
-              width: 2,
-            ),
+            borderSide: const BorderSide(color: AppColors.primary, width: 2),
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -90,10 +76,7 @@ class MyApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             elevation: 2,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-              vertical: 16,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           ),
         ),
         textTheme: const TextTheme(
@@ -121,32 +104,22 @@ class MyApp extends StatelessWidget {
             color: AppColors.primaryText,
             fontWeight: FontWeight.w600,
           ),
-          bodyLarge: TextStyle(
-            color: AppColors.primaryText,
-          ),
-          bodyMedium: TextStyle(
-            color: AppColors.secondaryText,
-          ),
-          bodySmall: TextStyle(
-            color: AppColors.lightText,
-          ),
+          bodyLarge: TextStyle(color: AppColors.primaryText),
+          bodyMedium: TextStyle(color: AppColors.secondaryText),
+          bodySmall: TextStyle(color: AppColors.lightText),
         ),
       ),
       home: const AuthWrapper(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/login':
-            return MaterialPageRoute(
-              builder: (context) => const LoginScreen(),
-            );
+            return MaterialPageRoute(builder: (context) => const LoginScreen());
           case '/register':
             return MaterialPageRoute(
               builder: (context) => const RegisterScreen(),
             );
           case '/home':
-            return MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
-            );
+            return MaterialPageRoute(builder: (context) => const HomeScreen());
           case '/create-post':
             return MaterialPageRoute(
               builder: (context) => const CreatePostScreen(),
@@ -165,9 +138,7 @@ class MyApp extends StatelessWidget {
               builder: (context) => const ProfileScreen(),
             );
           default:
-            return MaterialPageRoute(
-              builder: (context) => const AuthWrapper(),
-            );
+            return MaterialPageRoute(builder: (context) => const AuthWrapper());
         }
       },
     );
@@ -190,9 +161,7 @@ class AuthWrapper extends StatelessWidget {
           return const Scaffold(
             backgroundColor: AppColors.mainBackground,
             body: Center(
-              child: CircularProgressIndicator(
-                color: AppColors.primary,
-              ),
+              child: CircularProgressIndicator(color: AppColors.primary),
             ),
           );
         }

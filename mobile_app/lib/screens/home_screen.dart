@@ -39,11 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _handleEditPost(Post post) {
-    Navigator.pushNamed(
-      context,
-      '/edit-post',
-      arguments: post,
-    );
+    Navigator.pushNamed(context, '/edit-post', arguments: post);
   }
 
   Future<void> _handleDeletePost(Post post) async {
@@ -51,9 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.cardBackground,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text(
           AppStrings.deletePost,
           style: TextStyle(color: AppColors.primaryText),
@@ -129,9 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.primary,
-              ),
+              child: CircularProgressIndicator(color: AppColors.primary),
             );
           }
 
@@ -148,9 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 16),
                   Text(
                     'Error: ${snapshot.error}',
-                    style: const TextStyle(
-                      color: AppColors.secondaryText,
-                    ),
+                    style: const TextStyle(color: AppColors.secondaryText),
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -182,10 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 8),
                   const Text(
                     'Be the first to share something!',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.lightText,
-                    ),
+                    style: TextStyle(fontSize: 14, color: AppColors.lightText),
                   ),
                 ],
               ),
@@ -219,10 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: _navigateToCreatePost,
         backgroundColor: AppColors.accent,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColors.cardBackground,
@@ -235,14 +219,8 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.public),
             label: 'Public Feed',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.lock),
-            label: 'Private',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.lock), label: 'Private'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );
