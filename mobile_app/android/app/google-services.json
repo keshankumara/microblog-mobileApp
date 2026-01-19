@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "934012847497",
+    "project_id": "microblog-app-001",
+    "storage_bucket": "microblog-app-001.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934012847497:android:1732fc30fd63abbf974d58",
+        "android_client_info": {
+          "package_name": "com.example.microblog_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934012847497-ps8oo7hro6dhrbq2i9s9j0jkv9j24db6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCAEQzY9hzjcRv1K9ixg9a4giNoisJSvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934012847497-ps8oo7hro6dhrbq2i9s9j0jkv9j24db6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "934012847497-61jsjd92uds8ic6uffb6oc6purdm91cp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.future.microblog"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934012847497:android:58fc977d06bb195e974d58",
+        "android_client_info": {
+          "package_name": "com.example.mobile_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934012847497-ps8oo7hro6dhrbq2i9s9j0jkv9j24db6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCAEQzY9hzjcRv1K9ixg9a4giNoisJSvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934012847497-ps8oo7hro6dhrbq2i9s9j0jkv9j24db6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "934012847497-61jsjd92uds8ic6uffb6oc6purdm91cp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.future.microblog"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
