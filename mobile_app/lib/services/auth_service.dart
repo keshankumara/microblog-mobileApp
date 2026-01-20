@@ -40,9 +40,10 @@ class AuthService {
 
       return userCredential;
     } on FirebaseAuthException catch (e) {
-      throw _handleAuthException(e);
+      // Re-throw the original FirebaseAuthException for proper error handling
+      rethrow;
     } catch (e) {
-      throw 'An error occurred during registration';
+      throw Exception('An error occurred during registration');
     }
   }
 
@@ -58,9 +59,10 @@ class AuthService {
       );
       return userCredential;
     } on FirebaseAuthException catch (e) {
-      throw _handleAuthException(e);
+      // Re-throw the original FirebaseAuthException for proper error handling
+      rethrow;
     } catch (e) {
-      throw 'An error occurred during login';
+      throw Exception('An error occurred during login');
     }
   }
 
@@ -69,7 +71,7 @@ class AuthService {
     try {
       await _auth.signOut();
     } catch (e) {
-      throw 'An error occurred during logout';
+      throw Exception('An error occurred during logout');
     }
   }
 
@@ -85,7 +87,7 @@ class AuthService {
       }
       return null;
     } catch (e) {
-      throw 'Failed to fetch user data';
+      throw Exception('Failed to fetch user data');
     }
   }
 

@@ -3,6 +3,7 @@ import '../constants/colors.dart';
 import '../constants/strings.dart';
 import '../models/post.dart';
 import '../services/post_service.dart';
+import '../utils/error_handler.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -47,21 +48,15 @@ class _EditPostScreenState extends State<EditPostScreen> {
         );
 
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Post updated successfully'),
-              backgroundColor: AppColors.success,
-            ),
-          );
+          ErrorHandler.showSuccess(context, 'Post updated successfully!');
           Navigator.pop(context);
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to update post: $e'),
-              backgroundColor: AppColors.error,
-            ),
+          ErrorHandler.handleError(
+            context,
+            e,
+            customMessage: 'Failed to update post. Please try again.',
           );
         }
       } finally {

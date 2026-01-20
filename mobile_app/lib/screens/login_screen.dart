@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/strings.dart';
 import '../services/auth_service.dart';
+import '../utils/error_handler.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -38,16 +39,12 @@ class _LoginScreenState extends State<LoginScreen> {
         );
 
         if (mounted) {
+          ErrorHandler.showSuccess(context, 'Welcome back!');
           Navigator.pushReplacementNamed(context, '/home');
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(e.toString()),
-              backgroundColor: AppColors.error,
-            ),
-          );
+          ErrorHandler.handleError(context, e);
         }
       } finally {
         if (mounted) {

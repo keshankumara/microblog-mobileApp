@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/strings.dart';
 import '../services/auth_service.dart';
+import '../utils/error_handler.dart';
 import '../widgets/custom_button.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -16,44 +17,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool _isLoading = false;
 
   Future<void> _handleLogout() async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: AppColors.cardBackground,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text(
-          'Logout',
-          style: TextStyle(color: AppColors.primaryText),
-        ),
-        content: const Text(
-          'Are you sure you want to logout?',
-          style: TextStyle(color: AppColors.secondaryText),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text(
-              AppStrings.cancel,
-              style: TextStyle(color: AppColors.secondaryText),
-            ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text(
-              AppStrings.logout,
-              style: TextStyle(color: AppColors.error),
-            ),
-          ),
-        ],
-      ),
+    final confirmed = await ErrorHandler.showConfirmationDialog(
+      context,
+      title: 'Logout',
+      message: 'Are you sure you want to logout?',
+      confirmText: AppStrings.logout,
+      cancelText: AppStrings.cancel,
+      isDangerous: false,
     );
 
-    if (confirmed == true) {
+    if (confirmed) {
       setState(() => _isLoading = true);
 
       try {
         await _authService.logout();
         if (mounted) {
+          ErrorHandler.showInfo(context, 'Logged out successfully!');
           Navigator.pushNamedAndRemoveUntil(
             context,
             '/login',
@@ -62,11 +41,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to logout: $e'),
-              backgroundColor: AppColors.error,
-            ),
+          ErrorHandler.handleError(
+            context,
+            e,
+            customMessage: 'Failed to logout. Please try again.',
           );
         }
       } finally {

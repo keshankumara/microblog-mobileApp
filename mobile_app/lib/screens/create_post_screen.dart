@@ -3,6 +3,7 @@ import '../constants/colors.dart';
 import '../constants/strings.dart';
 import '../services/auth_service.dart';
 import '../services/post_service.dart';
+import '../utils/error_handler.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -34,12 +35,12 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       try {
         final currentUser = _authService.currentUser;
         if (currentUser == null) {
-          throw 'User not logged in';
+          throw Exception('Please login to create a post');
         }
 
         final userData = await _authService.getUserData(currentUser.uid);
         if (userData == null) {
-          throw 'User data not found';
+          throw Exception('Unable to fetch user data. Please try again.');
         }
 
         await _postService.createPost(
@@ -50,21 +51,18 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         );
 
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Post created successfully'),
-              backgroundColor: AppColors.success,
-            ),
+          ErrorHandler.showSuccess(
+            context,
+            'Post ${_isPublic ? "published" : "saved"} successfully!',
           );
           Navigator.pop(context);
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to create post: $e'),
-              backgroundColor: AppColors.error,
-            ),
+          ErrorHandler.handleError(
+            context,
+            e,
+            customMessage: 'Failed to create post. Please try again.',
           );
         }
       } finally {

@@ -4,6 +4,7 @@ import '../constants/strings.dart';
 import '../models/post.dart';
 import '../services/auth_service.dart';
 import '../services/post_service.dart';
+import '../utils/error_handler.dart';
 import '../widgets/post_card.dart';
 
 class PrivateFeedScreen extends StatefulWidget {
@@ -22,56 +23,27 @@ class _PrivateFeedScreenState extends State<PrivateFeedScreen> {
   }
 
   Future<void> _handleDeletePost(Post post) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: AppColors.cardBackground,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text(
-          AppStrings.deletePost,
-          style: TextStyle(color: AppColors.primaryText),
-        ),
-        content: const Text(
-          AppStrings.deleteConfirmation,
-          style: TextStyle(color: AppColors.secondaryText),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text(
-              AppStrings.cancel,
-              style: TextStyle(color: AppColors.secondaryText),
-            ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text(
-              AppStrings.delete,
-              style: TextStyle(color: AppColors.error),
-            ),
-          ),
-        ],
-      ),
+    final confirmed = await ErrorHandler.showConfirmationDialog(
+      context,
+      title: AppStrings.deletePost,
+      message: AppStrings.deleteConfirmation,
+      confirmText: AppStrings.delete,
+      cancelText: AppStrings.cancel,
+      isDangerous: true,
     );
 
-    if (confirmed == true) {
+    if (confirmed) {
       try {
         await _postService.deletePost(post.id);
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Post deleted successfully'),
-              backgroundColor: AppColors.success,
-            ),
-          );
+          ErrorHandler.showSuccess(context, 'Post deleted successfully!');
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Failed to delete post: $e'),
-              backgroundColor: AppColors.error,
-            ),
+          ErrorHandler.handleError(
+            context,
+            e,
+            customMessage: 'Failed to delete post. Please try again.',
           );
         }
       }
